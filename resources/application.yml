@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: board2024_boot_jpa
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sample?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: "Wjdgml119!"
+  thymeleaf:
+    cache: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  web:
+    resources:
+      static-locations: classpath:/static/, classpath:/public/, classpath:/custom-static/

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <h2>hello spring boot</h2>
+    <button onclick="saveReq();">글 작성</button>
+    <button onclick="listReq()">글 목록</button>
+    <button onclick="geoReq()">위치 좌표 확인</button>
+    <script>
+        function saveReq(){
+        location.href = "/board/save"
+        }
+
+        function listReq(){
+        location.href = "/board/"
+        }
+
+        function geoReq(){
+        location.href = "/geo/"
+        }
+    </script>
+</body>
+</html>
