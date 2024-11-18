@@ -1,5 +1,6 @@
 package board.controller;
 
+import board.DTO.GeoDTO;
 import board.service.GeoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,8 +28,8 @@ public class GeoController {
     @GetMapping("/")
     public String findAll(Model model) {
         // DB에서 전체 데이터를 가져와서 list.html에서 보여준다.
-//        List<GeoDTO> boardDTOList =  geoService.findAll();
-//        model.addAttribute("geoList", boardDTOList);
+        List<GeoDTO> geoDTOList =  geoService.findAll();
+        model.addAttribute("geoList", geoDTOList);
         return "geolocation";
     }
 
