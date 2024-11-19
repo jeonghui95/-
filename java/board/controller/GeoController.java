@@ -10,46 +10,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@ResponseBody
 @RequiredArgsConstructor
 @RequestMapping("/geo")
 public class GeoController {
     private final GeoService geoService;
 
-//    @GetMapping("/save")
-//    public String saveForm(){
-//        return "save";
-//    }
+//        @GetMapping("/?latitude={latitude}&longitude={longitude}")//API URL 설정 + GET Method
+//        public List<GeoDTO> findNearest(@PathVariable double latitude, double longitude) {
+//            return geoService.findNearest(latitude,longitude);
 //
-//    @PostMapping("/save")
-//    public String save(@ModelAttribute BoardDTO boardDTO) {
-//        boardService.save(boardDTO);
-//        return "index";
-//    }
-    @GetMapping("/")
-    public String findAll(Model model) {
-        // DB에서 전체 데이터를 가져와서 list.html에서 보여준다.
-        List<GeoDTO> geoDTOList =  geoService.findAll();
-        model.addAttribute("geoList", geoDTOList);
-        return "geolocation";
+//        }
+        @GetMapping("/location") // API 경로 명확화
+        public List<GeoDTO> findNearest(
+                @RequestParam double latitude,  // URL 파라미터로 처리
+                @RequestParam double longitude) {
+
+            // 매개변수 검증
+            if (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
+                throw new IllegalArgumentException("Invalid latitude or longitude values.");
+            }
+
+            // 서비스 호출 및 데이터 반환
+            return geoService.findNearest(latitude, longitude);
+        }
+
+        @GetMapping("/")
+        public  String TestAPI(){
+            return "sample";
+        }
     }
 
 
-//    @GetMapping("/{id}")
-//    public String findById(@PathVariable Long id, Model model){
-//        /*
-//            해당 게시글의 조회수를 하나 올리고
-//            게시글 데이터를 가져와서 detail.html에 출력
-//         */
-//        System.out.println(3);
-//        boardService.updateHits(id);
-//        BoardDTO boardDTO = boardService.findById(id);
-//        /* 댓글 목록 가져오기 */
-////        List<CommentDTO> commentDTOList = commentService.findAll(id);
-////        model.addAttribute("commentList", commentDTOList);
-//        model.addAttribute("board", boardDTO);
-////        model.addAttribute("page", pageable.getPageNumber());
-//        return "detail";
-//    }
-    }
 
 

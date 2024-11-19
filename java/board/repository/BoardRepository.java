@@ -1,3 +1,5 @@
+// Spring 공부용 게시판 프로젝트//
+
 package board.repository;
 
 import board.entity.BoardEntity;

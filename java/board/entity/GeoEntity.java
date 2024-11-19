@@ -31,13 +31,6 @@ public class GeoEntity {
 
     @Column
     private double longitude;;
-//
-//    private String borough;
-//    private String InstallationLocation;
-//    private String category;
-//    private String wasteType;
-//    private double latitude;
-//    private double longitude;
 
 //    public static GeoEntity toSaveEntity(BoardDTO boardDTO) {
 //        GeoEntity boardEntity = new GeoEntity();

@@ -1,3 +1,6 @@
+// Spring 공부용 게시판 프로젝트//
+
+
 package board.controller;
 
 import board.DTO.BoardDTO;
@@ -16,7 +19,8 @@ public class Boardcontroller {
     private final BoardService boardService;
 
     @GetMapping("/save")
-    public String saveForm(){
+        public String saveForm()
+    {
         return "save";
     }
 
@@ -40,7 +44,6 @@ public class Boardcontroller {
             해당 게시글의 조회수를 하나 올리고
             게시글 데이터를 가져와서 detail.html에 출력
          */
-        System.out.println(3);
         boardService.updateHits(id);
         BoardDTO boardDTO = boardService.findById(id);
         /* 댓글 목록 가져오기 */

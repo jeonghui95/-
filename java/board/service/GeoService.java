@@ -20,40 +20,20 @@ import java.util.Optional;
 public class GeoService {
     private final GeoRepository geoRepository;
 
-//    public void save(GeoDTO geoDTO) {
-//        GeoEntity boardEntity = GeoEntity.toSaveEntity(boardDTO);
-//        geoRepository.save(boardEntity);
-//    }
-    @Transactional
-    public List<GeoDTO> findAll() {
-        List<GeoEntity> geoEntityList = geoRepository.findAll();
+    public List<GeoDTO> findNearest(double latitude, double longitude) {
         List<GeoDTO> geoDTOList = new ArrayList<>();
-        for (GeoEntity geoEntity: geoEntityList) {
+        List<GeoEntity> geoEntityList = geoRepository.findNearest(latitude, longitude);
+        // Entity를 DTO로 변환하여 반환
+        for(GeoEntity geoEntity : geoEntityList)
             geoDTOList.add(GeoDTO.toGeoDTO(geoEntity));
-        }
-        return geoDTOList;
+            return geoDTOList;
     }
+}
 
-//    @Transactional
-//    public void updateHits(Long id) {
-//        geoRepository.updateHits(id);
-//    }
 
-//    @Transactional
-//    public BoardDTO findById(Long id) {
-//        Optional<BoardEntity> optionalBoardEntity = geoRepository.findById(id);
-//        if (optionalBoardEntity.isPresent()) {
-//            BoardEntity boardEntity = optionalBoardEntity.get();
-//            BoardDTO boardDTO = BoardDTO.toBoardDTO(boardEntity);
-//            System.out.println(boardDTO);
-//            System.out.println(3);
-//            return boardDTO;
-//        } else {
-//            System.out.println(3);
-//            System.out.println(3);
-//            System.out.println(3);
-//            return null;
-        }
+
+
+
 
 
 //    }
